@@ -18,8 +18,8 @@ export default {
   name: "App",
 
   async mounted() {
-    const result = await reqFloors();
-    console.log("mock result ", result);
+    //const result = await reqFloors();
+    //console.log("mock result ", result);
 
     this.$store.dispatch("getBaseCategoryList");
   },
