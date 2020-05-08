@@ -5,9 +5,9 @@ import { reqBaseCategoryList, reqBanners, reqFloors } from "@/api";
 
 export default {
   state: {
-    baseCategoryList: [],
-    banners: [],
-    floors: [],
+    baseCategoryList: [], // 所有分类的数组
+    banners: [], // 轮播的数组
+    floors: [], // 楼层的数组
   },
 
   mutations: {
@@ -17,6 +17,7 @@ export default {
     RECEIVE_BASE_CATEGORY_LIST(state, baseCategoryList) {
       state.baseCategoryList = baseCategoryList;
     },
+
     /* 
     接收保存新的轮播数组
     */
@@ -25,8 +26,8 @@ export default {
     },
 
     /* 
-  接收保存新的楼层数组
-  */
+    接收保存新的楼层数组
+    */
     RECEIVE_FLOORS(state, floors) {
       state.floors = floors;
     },
@@ -37,14 +38,13 @@ export default {
     获取分类列表的异步action
     */
     async getBaseCategoryList({ commit }) {
-      // 1. 发异步ajax请求
       const result = await reqBaseCategoryList();
-      // 2. 成功后, 提交mutation保存数据
       if (result.code === 200) {
         const baseCategoryList = result.data;
         commit("RECEIVE_BASE_CATEGORY_LIST", baseCategoryList);
       }
     },
+
     /* 
     获取轮播列表的异步action
     */
@@ -55,13 +55,14 @@ export default {
         commit("RECEIVE_BANNERS", banners);
       }
     },
+
     /* 
     获取楼层列表的异步action
     */
     async getFloors({ commit }) {
       const result = await reqFloors();
       if (result.code === 200) {
-        const floors = result.floors;
+        const floors = result.data;
         commit("RECEIVE_FLOORS", floors);
       }
     },

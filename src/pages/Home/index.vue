@@ -20,10 +20,13 @@ import Floor from "./Floor/Floor";
 import Brand from "./Brand/Brand";
 export default {
   name: "Home",
+
   mounted() {
+    // 分发action请求获取banners和floors数据到state中
     this.$store.dispatch("getBanners");
     this.$store.dispatch("getFloors");
   },
+
   computed: {
     ...mapState({
       floors: (state) => state.home.floors,

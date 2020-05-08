@@ -3,24 +3,7 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <!-- <div class="swiper-container" id="swiper"> -->
-        <div class="swiper-container" ref="swiper">
-          <div class="swiper-wrapper">
-            <div
-              class="swiper-slide"
-              v-for="banner in banners"
-              :key="banner.id"
-            >
-              <img :src="banner.imgUrl" />
-            </div>
-          </div>
-          <!-- 如果需要分页器 -->
-          <div class="swiper-pagination"></div>
-
-          <!-- 如果需要导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
+        <Carousel :carouselList="banners" />
       </div>
       <div class="right">
         <div class="news">
@@ -111,29 +94,29 @@ export default {
     }),
   },
   watch: {
-    banners(value) {
-      console.log("watch banners", value.length);
-      this.$nextTick(() => {
-        this.initSwiper();
-      });
-    },
+    // banners(value) {
+    //   console.log("watch banners", value.length);
+    //   this.$nextTick(() => {
+    //     this.initSwiper();
+    //   });
+    // },
     msg() {
       console.log("watch msg", this.$refs.msg.innerHTML);
     },
   },
   methods: {
-    initSwiper() {
-      new Swiper(this.$refs.swiper, {
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    },
+    // initSwiper() {
+    //   new Swiper(this.$refs.swiper, {
+    //     loop: true,
+    //     pagination: {
+    //       el: ".swiper-pagination",
+    //     },
+    //     navigation: {
+    //       nextEl: ".swiper-button-next",
+    //       prevEl: ".swiper-button-prev",
+    //     },
+    //   });
+    // },
     updateMsg() {
       this.msg = "baidu";
       console.log("updateMsg", this.$refs.msg.innerHTML);
