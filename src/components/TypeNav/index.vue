@@ -160,7 +160,11 @@ export default {
         }
 
         // 跳转到search
-        this.$router.push(location);
+        if (this.$route.name === "search") {
+          this.$router.replace(location);
+        } else {
+          this.$router.push(location);
+        }
 
         // 隐藏一级列表
         this.hideCategorys();

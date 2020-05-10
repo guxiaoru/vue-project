@@ -12,6 +12,11 @@ Vue.config.productionTip = false; // 去掉不是生产环境的提示
 // 注册全局组件
 Vue.component("TypeNav", TypeNav);
 Vue.component("Carousel", Carousel);
+new Vue({
+  beforeCreate() {
+    Vue.prototype.$bus = this;
+  },
+});
 
 new Vue({
   render: (h) => h(App),
