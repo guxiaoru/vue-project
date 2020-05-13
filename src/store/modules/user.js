@@ -1,13 +1,13 @@
 /* 
 用来管理用户数据的vuex模块
 */
-
-export default  {
+import { getUserTempId } from "@/utils";
+export default {
   state: {
     userInfo: {},
-    x: ''
+    userTempId: getUserTempId(),
   },
   mutations: {},
   actions: {},
   getters: {},
-}
+};
